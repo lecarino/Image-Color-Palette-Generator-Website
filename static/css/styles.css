@@ -10676,13 +10676,14 @@ footer {
 
 header.masthead {
   position: relative;
+  margin-top: 0;
   margin-bottom: 3rem;
-  padding-top: calc(8rem + 57px);
-  padding-bottom: 8rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background: no-repeat center center;
-  background-color: #6c757d;
   background-size: cover;
   background-attachment: scroll;
+  font-family: 'Franklin Gothic Medium';
 }
 header.masthead:before {
   content: "";

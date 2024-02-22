@@ -12,10 +12,9 @@ Bootstrap(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    current_date = datetime.now().strftime("%Y-%m-%d")
+
     img_path = None 
     palette = None
-    color_count = 6
 
     if request.method == 'POST':
         #check if a file was provided
@@ -24,15 +23,13 @@ def home():
 
             try:
                 color_count = int(request.form['text'])
-            except KeyError:
-                pass
-
+            except ValueError:
+                color_count = 6
             if file.filename != '':
                 image = Image.open(file)
                 img_array = np.array(image)
 
                 color_thief = ColorThief(file)
-                print(color_count)
                 palette = [(index + 1, color) for index, color in enumerate(color_thief.get_palette(color_count= color_count))]
 
                 # Save the image to a file in the static folder
@@ -41,7 +38,7 @@ def home():
                 Image.fromarray(img_array).save(img_path)
 
     colors = palette if palette is not None else []
-    return render_template('index.html', current_date=current_date, img_path=img_path, colors=colors)
+    return render_template('index.html', img_path=img_path, colors=colors)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5002)
+    app.run(debug=True)

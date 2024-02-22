@@ -7,7 +7,6 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
           <h2 class="mb-4">Image Color Extractor Website</h2>
-          <p id="current-date">{{ current_date }}</p>
         </div>
       </div>
     </div>
@@ -17,28 +16,33 @@
 <!-- Main Content-->
 <div class="container-md">
 
-  <img src="{{url_for('static', filename='uploaded_image.jpg') }}" class=" main-image-style img-fluid rounded mx-auto d-block mb-3" alt="...">
+  <div class="text-center container-sm">
+    <img src="{{url_for('static', filename='uploaded_image.jpg') }}"
+      class=" main-image-style rounded mx-auto d-block mb-3" style="display: block;" sizes="(max-width: 479px) 81vw, 390px">
+  </div>
 
   <table class="table">
     <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Color</th>
-            <th scope="col">RGB Values</th>
-        </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Color</th>
+        <th scope="col">RGB Values</th>
+      </tr>
     </thead>
     <tbody>
-        {% for row in colors %}
-            <tr>
-                <th scope="row">{{ row[0] }}</th>
-                <td>
-                    <div style="width: 20px; height: 20px; background-color: rgb({{ row[1][0] }}, {{ row[1][1] }}, {{ row[1][2] }});"></div>
-                </td>
-                <td>{{ row[1] }}</td>
-            </tr>
-        {% endfor %}
+      {% for row in colors %}
+      <tr>
+        <th scope="row">{{ row[0] }}</th>
+        <td>
+          <div
+            style="width: 20px; height: 20px; background-color: rgb({{ row[1][0] }}, {{ row[1][1] }}, {{ row[1][2] }});">
+          </div>
+        </td>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
     </tbody>
-</table>
+  </table>
 
   <form action="{{ url_for('home') }}" method="post" enctype="multipart/form-data">
 
@@ -56,4 +60,4 @@
   </form>
 </div>
 
-{% include "footer.html" %} 
+{% include "footer.html" %}
