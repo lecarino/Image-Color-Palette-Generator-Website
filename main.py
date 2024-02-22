@@ -1,26 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
-from datetime import datetime
+# from datetime import datetime
 from PIL import Image
 import numpy as np
 import os
 from colorthief import ColorThief
+# from memory_profiler import profile
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-Bootstrap(app)
+app.config['SECRET_KEY'] = os.environ.get("FLASK_KEY")
 
 @app.route('/', methods=['GET', 'POST'])
+# @profile
 def home():
-
     img_path = None 
     palette = None
-
     if request.method == 'POST':
         #check if a file was provided
         if 'file' in request.files:
             file = request.files['file']
-
             try:
                 color_count = int(request.form['text'])
             except ValueError:
