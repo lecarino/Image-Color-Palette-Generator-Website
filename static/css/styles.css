@@ -10,6 +10,9 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ .footer-links > li:hover{
+  opacity: .7;
+ }
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -106,8 +109,8 @@ body {
 
 /* Main Image Sizing */
 .main-image-style {
-  width: 50%; /* Set the desired width */
-  height: auto; /* Maintain aspect ratio */
+  width: 30%; 
+  height: auto; 
 }
 
 hr {
@@ -10678,8 +10681,6 @@ header.masthead {
   position: relative;
   margin-top: 0;
   margin-bottom: 3rem;
-  padding-top: 20px;
-  padding-bottom: 20px;
   background: no-repeat center center;
   background-size: cover;
   background-attachment: scroll;
@@ -10743,8 +10744,8 @@ header.masthead .post-heading .meta a {
 }
 @media (min-width: 992px) {
   header.masthead {
-    padding-top: 12.5rem;
-    padding-bottom: 12.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
   header.masthead .page-heading h1, header.masthead .page-heading .h1,
   header.masthead .site-heading h1,
